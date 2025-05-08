@@ -1,87 +1,106 @@
 import Image from "next/image";
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 export const SERVICES_DATA = [
   {
-    title: "المقاولات",
-    subtitle: "بناء وتجهيز",
-    subServicesCount: 4,
-    img: "serv-bg-1.webp",
-    icon: "serv-1.webp",
+    title: "كابلات",
+    img: "cable.png",
   },
   {
-    title: "الصيانة العامة",
-    subtitle: "إصلاح وترميم",
-    subServicesCount: 33,
-    img: "serv-bg-2.webp",
-    icon: "serv-2.webp",
+    title: "شواحن",
+    img: "charge.png",
   },
   {
-    title: "التصميم",
-    subtitle: "تصاميم مبتكرة",
-    subServicesCount: 7,
-    img: "serv-bg-3.webp",
-    icon: "serv-3.webp",
+    title: "سماعات أذن",
+    img: "earphone.png",
   },
   {
-    title: "التنظيف",
-    subtitle: "تنظيف شامل",
-    subServicesCount: 0,
-    img: "serv-bg-4.webp",
-    icon: "serv-4.webp",
+    title: "هواتف ذكية",
+    img: "smartphone.png",
+  },
+  {
+    title: "ساعات ذكية",
+    img: "smart-watch.png",
+  },
+  {
+    title: "ساعات ذكية",
+    img: "screen-protector.png",
+  },
+  {
+    title: "كابلات",
+    img: "cable.png",
+  },
+  {
+    title: "شواحن",
+    img: "charge.png",
+  },
+  {
+    title: "سماعات أذن",
+    img: "earphone.png",
+  },
+  {
+    title: "هواتف ذكية",
+    img: "smartphone.png",
+  },
+  {
+    title: "ساعات ذكية",
+    img: "smart-watch.png",
+  },
+  {
+    title: "ساعات ذكية",
+    img: "screen-protector.png",
   },
 ];
 
 const Services = () => {
   return (
-    <section className="mb-32 overflow-x-hidden">
+    <section className="mb-20 overflow-x-hidden">
       <div className="relative container mx-auto px-4">
         <div className="head text-center mb-8">
-          <h2 className="text-3xl font-bold mb-6 text-gray-800">
-            خدماتنا المتميزة
-          </h2>
+          <h2 className="text-3xl font-bold mb-4 text-gray-800">الفئات</h2>
           <p className="text-gray-600 font-medium leading-relaxed">
-            نقدم مجموعة متكاملة من الخدمات المتخصصة لتلبية احتياجاتكم بأعلى
-            معايير الجودة والاحترافية
+            نقدم مجموعة متكاملة من الفئات لتلبية احتياجاتكم بأعلى معايير الجودة
+            والاحترافية
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {SERVICES_DATA.map((serv) => (
-            <div
-              className="box bg-white rounded-md overflow-hidden"
-              key={serv.title}
-            >
-              {/* TOP */}
-              <div className="relative h-60 overflow-hidden">
-                <Image
-                  src={`/${serv.img}`}
-                  alt={serv.title}
-                  fill
-                  objectFit="cover"
-                />
-                <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-lg">
+
+        {/* Swiper Section */}
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={1}
+          navigation
+          modules={[Navigation]}
+          breakpoints={{
+            320: { slidesPerView: 2 },
+            640: { slidesPerView: 4 },
+            1280: { slidesPerView: 6 },
+          }}
+          className="!py-16"
+        >
+          {SERVICES_DATA.map((serv, i) => (
+            <SwiperSlide key={i}>
+              <div className="box overflow-hidden cursor-pointer hover:scale-105 relative hover:z-2 transition-all duration-500">
+                {/* TOP */}
+                <div className="relative h-60 overflow-hidden bg-white rounded-md shadow-md">
                   <Image
-                    src={`/${serv.icon}`}
+                    src={`/${serv.img}`}
                     alt={serv.title}
-                    width={40}
-                    height={40}
+                    fill
+                    className="object-cover"
                   />
                 </div>
-              </div>
-              {/* BOTTOM */}
-              <div className="p-4">
-                <div className="flex justify-between items-center gap-4 mb-4">
-                  <div className="rounded-full text-xs px-2 py-1 bg-second-300">
-                    {serv.subServicesCount} خدمات فرعية
-                  </div>
-                  <h4 className="font-bold">{serv.title}</h4>
+                {/* BOTTOM */}
+                <div className="p-4">
+                  <h4 className="font-bold text-center">{serv.title}</h4>
                 </div>
-                <h4 className="font-medium text-gray-600">{serv.subtitle}</h4>
-                <p></p>
               </div>
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </section>
   );

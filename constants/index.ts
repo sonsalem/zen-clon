@@ -5,11 +5,8 @@ export const BRAND_NAME = "زين التنموية";
 // Links
 
 export const NAV_LINKS = [
-  { href: "/", key: "services", label: "خدماتنا" },
-  { href: "/projects", key: "projects", label: "مشاريعنا" },
-  { href: "/about", key: "about", label: "من نحن" },
-  { href: "/contact", key: "contact", label: "اتصل بنا" },
-  { href: "/consulting", key: "consulting", label: "الاستشارات" },
-  { href: "/app", key: "app", label: "تطبيقنا" },
-  { href: "/blog", key: "blog", label: "مدونتنا" },
+  { href: "/", key: "home", label: "الرئيسية" },
+  { href: "/products", key: "products", label: "المنتجات" },
+  { href: "/categories", key: "categories", label: "الفئات" },
+  { href: "/brands", key: "brands", label: "العلامات التجارية" },
 ];

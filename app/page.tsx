@@ -2,6 +2,7 @@
 
 import About from "@/components/About/About";
 import Landing from "@/components/Landing/Landing";
+import Products from "@/components/Products/Products";
 import Services from "@/components/Services/Services";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <Landing />
       <About />
       <Services />
+      <Products />
     </div>
   );
 }

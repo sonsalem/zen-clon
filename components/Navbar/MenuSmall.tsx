@@ -12,9 +12,10 @@ interface MenuSmallProps {
     label: string;
   }[];
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  pathName: string;
 }
 
-const MenuSmall = ({ isOpen, links, setIsOpen }: MenuSmallProps) => {
+const MenuSmall = ({ isOpen, links, setIsOpen, pathName }: MenuSmallProps) => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const MenuSmall = ({ isOpen, links, setIsOpen }: MenuSmallProps) => {
       />
       <div
         ref={menuRef}
-        className={`fixed top-0  max-w-full h-screen bg-white z-20 transition-all duration-700 border-l-2 flex flex-col justify-between`}
+        className={`fixed top-0  max-w-full h-[100dvh] bg-white z-20 transition-all duration-700 border-l-2 flex flex-col justify-between`}
         style={{
           right: isOpen ? 0 : -MENU_WIDTH,
           width: `${MENU_WIDTH}px`,
@@ -65,11 +66,29 @@ const MenuSmall = ({ isOpen, links, setIsOpen }: MenuSmallProps) => {
               <Link
                 href={`/${link.href}`}
                 key={link.key}
-                className="transition-all hover:text-main duration-500 font-medium bg-second-300 px-4 py-2 rounded-md"
+                className={`transition-all hover:text-main duration-500 font-medium bg-second-300 px-4 py-2 rounded-md ${
+                  link.href === `` && pathName == `/`
+                    ? "text-main"
+                    : link.href !== "" && pathName.includes(link.href)
+                    ? "text-main"
+                    : ""
+                } `}
               >
                 {link.label}
               </Link>
             ))}
+            <Link
+              href={`/`}
+              className="transition-all hover:text-main duration-500 font-medium bg-second-300 px-4 py-2 rounded-md"
+            >
+              السلة (3)
+            </Link>
+            <Link
+              href={`/`}
+              className="transition-all hover:text-main duration-500 font-medium bg-second-300 px-4 py-2 rounded-md"
+            >
+              المفضلة (12)
+            </Link>
           </div>
         </div>
         {/* Button */}

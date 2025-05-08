@@ -24,3 +24,110 @@ body {
 ::-webkit-scrollbar-track {
   background-color: #000;
 }
+
+.swiper-wrapper {
+  transition: all 1s !important;
+}
+
+.swiper-pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  position: absolute !important;
+  bottom: 2rem !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: #000 !important;
+  opacity: 1 !important;
+}
+.swiper-pagination-bullet-active {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    width: 30px;
+    height: 30px;
+    border: 1px solid oklch(0.769 0.188 70.08);
+    border-left: 1px solid transparent;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background: #fff;
+  min-width: 35px;
+  max-width: 35px;
+  min-height: 35px;
+  max-height: 35px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  -webkit-text-fill-color: transparent;
+  top: 30px !important;
+}
+
+.swiper-button-next {
+  left: unset !important;
+  right: 50px !important;
+}
+
+.swiper-button-prev {
+  right: 10px !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  content: "" !important;
+  left: 55%;
+  top: 50%;
+  translate: -50% -50%;
+  position: absolute;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5'/%3E%3C/svg%3E");
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  color: #333;
+}
+
+.swiper-button-next:after {
+  rotate: 180deg;
+  left: 45%;
+}
+
+@media (width > 767px) {
+  .image-product:hover .actions {
+    left: 1rem;
+  }
+}
+
+.action .icon + span::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 6px solid #000; /* لون المثلث */
+}
+.action .icon:hover + span {
+  opacity: 1;
+  transform: translateX(0);
+}
