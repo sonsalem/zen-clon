@@ -9,8 +9,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        main: "oklch(.769 .188 70.08)",
+        second: {
+          100: "#f5edd7",
+          200: "#f9ce8e",
+          300: "oklch(.987 .022 95.277)",
+        },
       },
     },
   },
